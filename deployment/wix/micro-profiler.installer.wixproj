@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.8</ProductVersion>
+    <ProjectGuid>{ee4583a8-c1f3-4353-b504-4d739466ff63}</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>micro-profiler</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <Name>micro-profiler.installer</Name>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)_setup\</OutputPath>
+    <IntermediateOutputPath>$(SolutionDir)_obj\installer_$(Configuration)_$(Platform)\</IntermediateOutputPath>
+    <DefineConstants Condition="'$(Platform)'=='x86'">ROOTDIR=$(SolutionDir);SOURCEDIR=$(SolutionDir)_bin\$(Configuration)_$(Platform);SOURCEDIRWX86=$(SolutionDir)_bin\$(Configuration)_x86</DefineConstants>
+    <DefineConstants Condition="'$(Platform)'=='x64'">ROOTDIR=$(SolutionDir);SOURCEDIR=$(SolutionDir)_bin\$(Configuration)_$(Platform);SOURCEDIRWX86=$(SolutionDir)_bin\$(Configuration)_x86;SOURCEDIRWX64=$(SolutionDir)_bin\$(Configuration)_x64</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="micro-profiler.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="license.rtf" />
+    <Content Include="vspackage-pkgdef.wxi" />
+    <Content Include="vspackage.wxi" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixVSExtension">
+      <HintPath>$(WixExtDir)\WixVSExtension.dll</HintPath>
+      <Name>WixVSExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)scripts\make-version.cmd" VERSION "$(SolutionDir)version.h"
+
+set TargetNameVer="$(TargetName)_$(Platform).v%25VERSION%25$(TargetExt)"
+
+del "$(TargetDir)%25TargetNameVer%25"
+ren "$(TargetPath)" "%25TargetNameVer%25"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,32 @@
+[submodule "libraries/wpl"]
+	path = libraries/wpl
+	url = ../wpl.git
+	branch = origin/master
+[submodule "libraries/agge"]
+	path = libraries/agge
+	url = ../agge.git
+	branch = origin/master
+[submodule "libraries/utee"]
+	path = libraries/utee
+	url = ../utee.git
+	branch = origin/master
+[submodule "libraries/strmd"]
+	path = libraries/strmd
+	url = ../strmd.git
+	branch = origin/master
+[submodule "libraries/polyq"]
+	path = libraries/polyq
+	url = ../polyq.git
+	branch = origin/master
+[submodule "libraries/wpl.vs"]
+	path = libraries/wpl.vs
+	url = ../wpl.vs.git
+	branch = origin/master
+[submodule "libraries/utfia"]
+	path = libraries/utfia
+	url = ../utfia.git
+	branch = origin/master
+[submodule "libraries/tasker"]
+	path = libraries/tasker
+	url = ../tasker.git
+	branch = master

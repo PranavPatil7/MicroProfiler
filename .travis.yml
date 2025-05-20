@@ -1,0 +1,23 @@
+language: cpp
+
+git:
+ submodules: false
+
+before_install:
+ - git submodule update --init
+
+install:
+ - sudo apt-get install -y gcc-multilib
+ - sudo apt-get install -y g++-multilib
+  
+compiler:
+ - clang
+ - gcc
+
+script:
+ - mkdir _build
+ - cd _build
+ - cmake .. -DCMAKE_CXX_FLAGS="-m32" -DCMAKE_C_FLAGS="-m32" -DCMAKE_BUILD_TYPE=Release
+ - make -j3
+ - cd _bin
+ - ./utee-runner ./libcollector.tests.so ./libcommon.tests.so ./libfrontend.tests.so ./libipc.tests.so ./liblogger.tests.so ./libmt.tests.so ./libpatcher.tests.so ./libscheduler.tests.so

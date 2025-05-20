@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<Extern href="command-ids.h"/>
+	<Extern href="icon-ids.h"/>
+
+	<Extern href="stdidcmd.h"/>
+	<Extern href="vsshlids.h"/>
+
+	<Commands package="guidMicroProfilerPkg">
+		<Menus>
+			<Menu guid="guidGlobalCmdSet" id="IDM_MP_MM_MICROPROFILER" priority="0x700" type="Menu">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+				<Strings>
+					<ButtonText>MicroProfiler</ButtonText>
+				</Strings>
+			</Menu>
+			<Menu guid="guidInstanceCmdSet" id="IDM_MP_PANE_TOOLBAR" type="ToolWindowToolbar">
+				<Strings>
+					<ButtonText>MicroProfiler Instance Commands</ButtonText>
+				</Strings>
+			</Menu>
+			<Menu guid="guidInstanceCmdSet" id="IDM_MP_VIEWMODE_DROPDOWN" priority="0x000A" type="MenuControllerLatched">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<CommandFlag>TextChanges</CommandFlag>
+				<CommandFlag>TextIsAnchorCommand</CommandFlag>
+				<Strings>
+					<ButtonText>x</ButtonText>
+				</Strings>
+			</Menu>
+		</Menus>
+
+		<Groups>
+			<Group guid="guidGlobalCmdSet" id="IDG_MP_PROJECT_SETUP" priority="0x0800">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+			</Group>
+			<Group guid="guidGlobalCmdSet" id="IDG_MP_PROJECT_SETUP" priority="0x0800">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_XPROJ_MULTIPROJ"/>
+			</Group>
+			<Group guid="guidGlobalCmdSet" id="IDG_MP_MAIN" priority="0x0800">
+				<Parent guid="guidGlobalCmdSet" id="IDM_MP_MM_MICROPROFILER" />
+			</Group>
+			<Group guid="guidGlobalCmdSet" id="IDG_MP_IPC" priority="0x0850">
+				<Parent guid="guidGlobalCmdSet" id="IDM_MP_MM_MICROPROFILER" />
+			</Group>
+			<Group guid="guidGlobalCmdSet" id="IDG_MP_WINDOWS" priority="0x0900">
+				<Parent guid="guidGlobalCmdSet" id="IDM_MP_MM_MICROPROFILER" />
+			</Group>
+			<Group guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_RUN_COMMANDS" priority="0x0000">
+				<Parent guid="guidInstanceCmdSet" id="IDM_MP_PANE_TOOLBAR" />
+			</Group>
+			<Group guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_VIEW_COMMANDS" priority="0x0020">
+				<Parent guid="guidInstanceCmdSet" id="IDM_MP_VIEWMODE_DROPDOWN" />
+			</Group>
+			<Group guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" priority="0x0080">
+				<Parent guid="guidInstanceCmdSet" id="IDM_MP_PANE_TOOLBAR" />
+			</Group>
+			<Group guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_MISC_COMMANDS" priority="0x0100">
+				<Parent guid="guidInstanceCmdSet" id="IDM_MP_PANE_TOOLBAR" />
+			</Group>
+		</Groups>
+
+		<Buttons>
+			<!-- Project Context Menu Items -->
+			<Button guid="guidGlobalCmdSet" id="cmdidToggleProfiling" priority="0x0100" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_PROJECT_SETUP" />
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Enable Profiling</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidRemoveProfilingSupport" priority="0x0110" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_PROJECT_SETUP" />
+				<Icon guid="guidIconSet" id="iconidClear"/>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<Strings>
+					<ButtonText>Remove Profiling Support</ButtonText>
+				</Strings>
+			</Button>
+
+			<!-- Main Menu Items -->
+			<Button guid="guidGlobalCmdSet" id="cmdidLoadStatistics" priority="0x0110" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_MAIN" />
+				<Icon guid="guidIconSet" id="iconidOpen"/>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DefaultDisabled</CommandFlag>
+				<Strings>
+					<ButtonText>Open Statistics...</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidSaveStatistics" priority="0x0120" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_MAIN" />
+				<Icon guid="guidIconSet" id="iconidSave"/>
+				<CommandFlag>TextChanges</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DefaultDisabled</CommandFlag>
+				<Strings>
+					<ButtonText>Save Selected Statistics As...</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidProfileProcess" priority="0x0130" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_MAIN" />
+				<CommandFlag>DefaultDisabled</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<Strings>
+					<ButtonText>Profile Process...</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidIPCEnableRemote" priority="0x0100" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_IPC" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<Strings>
+					<ButtonText>Enable Remote Connections</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidIPCSocketPort" priority="0x0110" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_IPC" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<CommandFlag>TextChanges</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultDisabled</CommandFlag>
+				<Strings>
+					<ButtonText>  TCP Port (autoconfigured)</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidWindowActivateDynamic" priority="0x0300" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_WINDOWS" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<CommandFlag>TextChanges</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DynamicItemStart</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<ButtonText>---window---</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidCloseAll" priority="0x0310" type="Button">
+				<Parent guid="guidGlobalCmdSet" id="IDG_MP_WINDOWS" />
+				<Icon guid="guidIconSet" id="iconidCloseAll"/>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DefaultDisabled</CommandFlag>
+				<Strings>
+					<ButtonText>Close All</ButtonText>
+				</Strings>
+			</Button>
+
+			<!-- Tool Window Toolbar Items -->
+			<Button guid="guidInstanceCmdSet" id="cmdidResumeUpdates" priority="0x0008" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_RUN_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidPlay"/>
+				<CommandFlag>DontCache</CommandFlag>
+				<Strings>
+					<ButtonText>Resume Updates</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidInstanceCmdSet" id="cmdidPauseUpdates" priority="0x0009" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_RUN_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidPause"/>
+				<CommandFlag>DontCache</CommandFlag>
+				<Strings>
+					<ButtonText>Pause Updates</ButtonText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidInstanceCmdSet" id="cmdidViewHierarchy" priority="0x000C" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_VIEW_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidViewAsTree"/>
+				<Strings>
+					<ButtonText>Callstack Tree</ButtonText>
+					<ToolTipText>Display main statistics in a callstack tree</ToolTipText>
+				</Strings>
+			</Button>
+			<Button guid="guidInstanceCmdSet" id="cmdidViewFlat" priority="0x000D" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_VIEW_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidViewAsList"/>
+				<Strings>
+					<ButtonText>Functions List</ButtonText>
+					<ToolTipText>Display main statistics in a flat functions list</ToolTipText>
+				</Strings>
+			</Button>
+
+			<Button guid="guidInstanceCmdSet" id="cmdidSaveStatistics" priority="0x0010" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidSave"/>
+				<Strings>
+					<ButtonText>Save As...</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidInstanceCmdSet" id="cmdidCopyStatistics" priority="0x0110" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidCopy"/>
+				<Strings>
+					<ButtonText>Copy as CSV</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidInstanceCmdSet" id="cmdidClearStatistics" priority="0x0210" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" />
+				<Icon guid="guidIconSet" id="iconidClear"/>
+				<Strings>
+					<ButtonText>Clear</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidInstanceCmdSet" id="cmdidProfileScope" priority="0x0215" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_COMMANDS" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<CommandFlag>DontCache</CommandFlag>
+				<CommandFlag>DynamicVisibility</CommandFlag>
+				<CommandFlag>DefaultInvisible</CommandFlag>
+				<Strings>
+					<ButtonText>Profile Scope...</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidGlobalCmdSet" id="cmdidSupportDeveloper" priority="0x0010" type="Button">
+				<Parent guid="guidInstanceCmdSet" id="IDG_MP_INSTANCE_MISC_COMMANDS" />
+				<CommandFlag>TextOnly</CommandFlag>
+				<Strings>
+					<ButtonText>Star Me!</ButtonText>
+				</Strings>
+			</Button>
+		</Buttons>
+	</Commands>
+</CommandTable>

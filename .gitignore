@@ -1,0 +1,15 @@
+*.user
+*/_*/*
+_*
+*.suo
+*.sdf
+*.opensdf
+TestResults/*
+UpgradeLog.htm*
+*.lib
+*.ncb
+ipch
+*.aps
+.vs
+*.VC.db
+!*.tests.vcxproj.user

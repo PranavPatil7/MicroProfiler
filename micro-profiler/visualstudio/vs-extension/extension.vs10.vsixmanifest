@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+	<Identifier Id="!vsixid!">
+		<Name>MicroProfiler</Name>
+		<Author>gevorkyan.org</Author>
+		<Version>!version!</Version>
+		<Description xml:space="preserve">A low-overhead instrumenting profiler with realtime statistics display for native applications.</Description>
+		<Icon>logo.ico</Icon>
+		<PreviewImage>micro-profiler_preview.png</PreviewImage>
+		<License>license.rtf</License>
+		<Locale>1033</Locale>
+		<SupportedProducts>
+			<VisualStudio Version="10.0">
+				<Edition>Pro</Edition>
+			</VisualStudio>
+		</SupportedProducts>
+		<SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+	</Identifier>
+	<References>
+		<Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
+			<Name>Visual Studio MPF</Name>
+		</Reference>
+	</References>
+
+	<Content>
+		<VsPackage>micro-profiler.pkgdef</VsPackage>
+	</Content>
+</Vsix>
